@@ -1,0 +1,50 @@
+{
+  "Employee": [
+    {
+      "id": "1",
+      "fname": "Subhaga",
+      "lname": "Anilkumar",
+      "age": "24",
+      "email": "subhaga@gmail.com",
+      "departmentid": "11"
+    },
+    {
+      "id": "2",
+      "fname": "Sanjupriya",
+      "lname": "Manikyala",
+      "age": "24",
+      "email": "sanjupriya@gmail.com",
+      "departmentid": "12"
+    },
+    {
+      "id": "3",
+      "fname": "Manohar",
+      "lname": "Jooripala",
+      "age": "25",
+      "email": "manohar@gmail.com",
+      "departmentid": "12"
+    },
+    {
+      "id": "4",
+      "fname": "Amaleshwar",
+      "lname": "Rao",
+      "age": "24",
+      "email": "amaleshwar@gmail.com",
+      "departmentid": "11"
+    }
+  ],
+  "Department": [
+    {
+      "id": "11",
+      "name": "Finance"
+    },
+    {
+      "id": "12",
+      "name": "Travel"
+    },
+    {
+      "id": "1213",
+      "name": "tempdepart"
+    }
+  ]
+}

@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code>
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>      
-      </div>
-    );
-  }
+import  ListEmployees from './Components/ListEmployees';
+
+import  AddEmployee from './Components/AddEmployee';
+import {Link} from 'react-router-dom';
+
+
+
+function App() {
+  return (
+    <nav className="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center">
+      <ul className="navbar-nav">
+        <li className="nav-item">
+          <Link to="/list-employees">List Employee </Link>
+          &nbsp; &nbsp; &nbsp;
+          <Link to="/add-employee">Add Employee </Link>
+          &nbsp; &nbsp; &nbsp;
+          <Link to="/add-department">Add Department </Link>
+          </li>
+        </ul>
+      </nav>
+  );
 }
 
 export default App;
