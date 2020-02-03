@@ -1,6 +1,6 @@
 import React  from 'react';
 import axios from 'axios';
-
+import App from '../App';
 import {connect} from 'react-redux'
 
  class AddDepartment extends React.Component{
@@ -50,19 +50,22 @@ import {connect} from 'react-redux'
 
     render(){
         return(
+            <div>
+                <App/>
             <form onSubmit={(e)=>this.adddepartment(e)} ref="adddepartmentForm">
-                    <div className="form-group">
+                    <div className="form-group col-lg-4">
                         <label>Enter the ID:</label>
                         <input type='text' name="id" onChange={(e)=>this.changeid(e)} className="form-control" /> 
                         </div>
-                        <div className="form-group">
+                        <div className="form-group col-lg-4">
                         <label>Enter Name:</label>
                         <input type='text' name="fname" onChange={(e)=>this.changefname(e)} className="form-control" /> 
                         </div>
-                        <div className="form-group text-center">
+                        <div className="form-group mx-4">
                         <button type='submit'  className="btn btn-primary" onSubmit={(e)=>this.adddepartment(e)} >Add Department </button>
                         </div>
                 </form>
+                </div>
         )
     }
 

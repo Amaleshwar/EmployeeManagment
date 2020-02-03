@@ -1,55 +1,57 @@
-import React from 'react';
+import React  from 'react';
 import axios from 'axios';
 
-import  EmployeeRow from './EmployeeRow';
 import {connect} from 'react-redux'
 
+ class EmployeeRow extends React.Component{
 
- class ListEmployees extends React.Component{
-
-    componentWillMount(){
-        axios.get('http://localhost:3000/Employee')
-        .then(response =>{
-            this.props.dispatch({
-                type:'FETCH_EMPLOYEES',
-                employees:response.data
-            });
-
-        })
-        .catch(error => {
-            console.log(error);
-        })
+    constructor(){
+        super();
+        this.state={
+            
+        }
     }
+
+    deleemployeeByID(){
+        axios.delete("http://localhost:3000/Employee/"+this.props.employee.id)
+        .then((res)=>{ 
+            console.log(res.status);
+                if(res.status===200){
+                    this.props.dispatch({
+                        type:'DELETE_EMPLOYEE',
+                        id:this.props.employee.id
+                    });
+                }
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+        }
+        
+ 
 
 
     render(){
+
         return(
-                <table className="table table-striped table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>FIRST NAME</th>
-                            <th>LAST NAME</th>
-                            <th>AGE</th>
-                            <th>EMAIL</th>
-                            <th>DEPARTMENT ID</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {/* {this.state.products.map((product,index) => <ProductRow product={product} key={index} />)} */}
-                            {this.props.employees.EmpManagementReducer.map((employee,index) => <EmployeeRow employee={employee} key={index} />)}
-                         </tbody>
-                </table>
+                    <tr>
+                        <td>{this.props.employee.id}</td>
+                        <td>{this.props.employee.fname}</td>
+                        <td>{this.props.employee.lname}</td>
+                        <td>{this.props.employee.age}</td>
+                        <td>{this.props.employee.email}</td>
+                        <td>{this.props.employee.departmentid}</td>
+                        <td>
+                        <button type="button" className=" btn btn-danger" onClick={()=>{
+        this.deleemployeeByID()
+    }}>Delete</button>
+                            </td>
+                    </tr>
 
         )
+
     }
 
 }
 
-const mapStateToProps =(state) =>{
-    return{
-        employees:state 
-    }
-};
-
-export default connect(mapStateToProps)(ListEmployees);
+export default connect()(EmployeeRow);
