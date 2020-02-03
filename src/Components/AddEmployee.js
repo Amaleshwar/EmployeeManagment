@@ -1,6 +1,6 @@
 import React  from 'react';
 import axios from 'axios';
-
+import App from '../App';
 import {connect} from 'react-redux'
 
  class AddEmployee extends React.Component{
@@ -84,39 +84,46 @@ import {connect} from 'react-redux'
 
     render(){
         return(
+            <div>
+                <App/>
             <form onSubmit={(e)=>this.addemployee(e)} ref="addemployeeForm" autocomplete="off" >
-                    <div className="form-group">
+                    <div className="form-group col-lg-4">
                         <label>Enter the ID:</label>
                         <input type='text' name="id" onChange={(e)=>this.changeid(e)} className="form-control" /> 
                         </div>
-                        <div className="form-group">
+                        <div className="form-group col-lg-4">
                         <label>Enter First Name:</label>
                         <input type='text' name="fname" onChange={(e)=>this.changefname(e)} className="form-control" /> 
                         </div>
-                        <div className="form-group">
+                        <div className="form-group col-lg-4">
                         <label>Enter Last Name:</label>
                         <input type='text' name="lname" onChange={(e)=>this.changelname(e)} className="form-control" /> 
                         </div>
-                        <div className="form-group">
+                        <div className="form-group col-lg-4">
                         <label>Enter Age:</label>
                         <input type='text' name="age" onChange={(e)=>this.changeage(e)} className="form-control" /> 
                         </div>
-                        <div className="form-group">
+                        <div className="form-group col-lg-4">
                         <label>Enter Email:</label>
                         <input type='text' name="email" onChange={(e)=>this.changeemail(e)} className="form-control" /> 
                         </div>
-                        <div className="form-group">
+                        <div className="form-group col-lg-4">
                         <label>Enter DepartmentID:</label>
                         {/* <input type='text' name="DeptID" onChange={(e)=>this.changedeptid(e)} className="form-control" />  */}
-                        <input type='text' name="DeptID" list="departments" onChange={(e)=>this.changedeptid(e)} className="form-control" />
+                       {/*  <input type='text' name="DeptID" list="departments" onChange={(e)=>this.changedeptid(e)} className="form-control" />
                             <datalist id="departments" >
                             {this.props.departments.EmpManagementReducer.map((department,index) => <option key={index} value={department.name} />)}
-                            </datalist>
+                            </datalist> */}
+
+                            <select  type='text' name="DeptID"  onChange={(e)=>this.changedeptid(e)} className="form-control" >
+{this.props.departments.EmpManagementReducer.map((department,index) => <option key={index}> {department.id}({department.name}) </option>)}
+    </select>
                         </div>
-                        <div className="form-group text-center">
+                        <div className="form-group mx-4">
                         <button type='submit'  className="btn btn-primary" onSubmit={(e)=>this.addemployee(e)} >Add Employee </button>
                         </div>
                 </form>
+                </div>
         )
     }
 
@@ -129,5 +136,11 @@ const mapStateToProps =(state) =>{
 
 
 export default  connect(mapStateToProps)(AddEmployee);
+
+
+
+
+
+
 
 
